@@ -15,3 +15,6 @@ This is thesis project in 2025 spring.
 
 ## Run application
 1. Run: node server.js
+2. Open your browser and input:
+   localhost:3000
+
