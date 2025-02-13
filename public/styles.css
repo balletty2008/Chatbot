@@ -4,20 +4,15 @@ body {
   color: white;
   margin: 0;
   padding: 0;
-  /*background-color: DarkGreen;*/
-
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-image: url('https://www.bing.com/images/blob?bcid=RGW.pkkVag4Ibd-ar8O.qiTRO7x6.....8A');
-      
+  background-image: url('images/background.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
-  /*background-color: #ea552d;*/
-
 }
 
 /* 导航条样式 */
@@ -97,7 +92,6 @@ body {
 }
 
 /* 主要内容区域样式 */
-
 section {
   margin-bottom: 40px;
 }
@@ -124,19 +118,10 @@ h1, h2 {
 .chat-icon {
   width: 80px; /* Size of the chat icon */
   height: 80px;
-  /*filter: brightness(0) invert(1); /* Make the icon white */
 }
-
 .chat-icon:hover {
   transform: scale(1.1);
-  /*background-color: #4a148c; /* Darker purple on hover */
 }
-
-
-
-
-
-
 
 /* 页脚样式 */
 footer {
