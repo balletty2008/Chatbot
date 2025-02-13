@@ -1,0 +1,150 @@
+/* 基本样式 */
+body {
+  font-family: Arial, sans-serif;
+  color: white;
+  margin: 0;
+  padding: 0;
+  /*background-color: DarkGreen;*/
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url('https://www.bing.com/images/blob?bcid=RGW.pkkVag4Ibd-ar8O.qiTRO7x6.....8A');
+      
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  /*background-color: #ea552d;*/
+
+}
+
+/* 导航条样式 */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+.navbar ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.navbar li {
+  margin: 0 10px;
+}
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+}
+.logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+}
+.logo-img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+.navbar .nav-links li {
+  margin-left: 20px;
+}
+.navbar .nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.navbar .auth-buttons {
+  display: flex;
+  gap: 10px;
+  margin-right: 100px;
+}
+.navbar .auth-buttons button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.navbar .auth-buttons .login-btn {
+  background-color: #4CAF50;
+  color: white;
+}
+.navbar .auth-buttons .register-btn {
+  background-color: #008CBA;
+  color: white;
+}
+
+/* 主要内容区域样式 */
+
+section {
+  margin-bottom: 40px;
+}
+h1, h2 {
+  color: #e3b14c;
+}
+
+/* Chat Button Styles */
+.chat-link {
+  position: fixed; /* Fixed position to stay in place while scrolling */
+  bottom: 35px; /* Distance from the bottom */
+  right: 20px; /* Distance from the right */
+  background-color: #f5f4b2; /*rgb(245, 169, 5); /* Purple background color */
+  padding: 15px; /* Padding around the icon */
+  border-radius: 50%; /* Circular shape */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none; /* Remove underline from link */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.chat-icon {
+  width: 80px; /* Size of the chat icon */
+  height: 80px;
+  /*filter: brightness(0) invert(1); /* Make the icon white */
+}
+
+.chat-icon:hover {
+  transform: scale(1.1);
+  /*background-color: #4a148c; /* Darker purple on hover */
+}
+
+
+
+
+
+
+
+/* 页脚样式 */
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

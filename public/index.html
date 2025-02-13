@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI_Chatbot</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+  main {
+    /* GLASS EFFECT*/
+    background: rgba(34, 128, 0, 0.6); /* Purple with 50% opacity*/
+    border-radius: 15px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 25px 40px rgba(0, 0, 0, 0.2); /* Slightly darker shadow*/
+    border: 1px solid rgba(128, 0, 128, 0.6); /* Purple border*/
+    border-right: 1px solid rgba(128, 0, 128, 0.3); /* Lighter purple border*/
+    border-bottom: 1px solid rgba(128, 0, 128, 0.3); /* Lighter purple border */
+  
+    padding: 20px;
+    margin-right: 35%;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    width: 1000px;
+    height: 900px;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+  }
+</style>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <a href="#">
+        <img src="images/cartoon.png" alt="Chatbot Logo" class="logo-img" />
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#contact">Contact us</a></li>
+    </ul>
+    <div class="auth-buttons">
+      <button class="login-btn" onclick="location.href='/login.html'">Login</button>
+      <button class="register-btn" onclick="location.href='register.html'">Register</button>
+    </div>
+  </nav>
+
+  <!-- Main Area -->
+  <main>
+    <section id="home">
+      <h1>Welcome!</h1>
+        <p>Hello, what can we help you with?</p>
+    </section>
+    <section id="about">
+      <h2>About us</h2>
+        <p>We are committed to providing the most advanced chatbot technology to help users solve problems and obtain information.</p>
+    </section>
+    <section id="features">
+      <h2>Features</h2>
+      <ul>
+        <li>24/7 service</li>
+        <li>Multilanguage support</li>
+        <li>Intelligent learning</li>
+      </ul>
+    </section>
+    <section id="contact">
+      <h2>Contact us</h2>
+        <p>If you have any questions, please contact us at: </p>
+        <p>Email: support@chatbot.com</p>
+    </section>
+    
+    <!-- Chat Button -->
+    <a href="chat.html" class="chat-link">
+      <img src="images/Chatbot-2.png" class="chat-icon" alt="Chat Icon" />
+    </a>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy;  2025 Chatbot Company. All rights reserved. </p>
+  </footer>
+</body>
+</html>

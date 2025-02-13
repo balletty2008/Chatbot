@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Chatbot</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('https://www.bing.com/images/blob?bcid=RGW.pkkVag4Ibd-ar8O.qiTRO7x6.....8A');
+      
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+  
+  #chat-container {
+    /* GLASS EFFECT  */
+    background: rgba(255, 255, 255, .5);
+    border-radius: 15px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 25px 40px rgba(0, 0, 0, .1);
+    border: 1px solid rgba(255, 255, 255, .6);
+    border-right: 1px solid rgba(255, 255, 255, .3);
+    border-bottom: 1px solid rgba(255, 255, 255, .3);
+
+    padding: 20px;
+    margin-right: 35%;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    width: 1000px;
+    height: 900px;
+    display: flex;
+    flex-direction: column;   /* Stack elements vertically */
+  }
+  
+  h1 {
+    font-family: "Jersey", sans-serif;
+    text-align: center;
+    font-size: 1.4rem;
+    color: #fff !important;
+    background: #724ae8;
+    padding: 16px 0;
+    margin-bottom: 10px;
+    position: relative;
+  }
+
+  #chat-history {
+    height: 300px;
+    overflow-y: auto;
+    overflow-y: scroll;
+    flex-grow: 1;   /* Allow chat history to fill available space*/
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 70%;
+  }
+  .user-message {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+    max-width: 75%;
+    align-self: flex-end;
+  }
+  .user-message .content {
+    padding: 12px 16px;
+    background-color: #c0f088;
+    border-radius: 10px 10px 0 10px;
+    max-width: calc(100%-50px);
+    order: 1;
+  }
+  .user-message .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 10px;
+    order: 2;
+  }
+
+  .bot-message {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    max-width: 75%;
+  }
+  .bot-message .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  .bot-message .content {
+    padding: 10px;
+    background-color: #e0f0e0;
+    border-radius: 0 10px 10px 10px;
+    max-width: calc(100%-50px);
+  }
+
+  .message img {
+    max-width: 200px;
+    max-height: 200px;
+    width: auto;
+    height: auto;
+    border-radius: 5px;
+    margin-top: 5px;
+  }
+
+  form {
+    display: flex;
+    align-self: flex-end;  /* Align form to the bottom of the chat container */
+  }
+  
+  input {
+    flex-grow: 1;
+    margin-right: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 500px;
+  }
+
+  .emoji-container {
+    position: relative;
+    display: inline-block;
+  }
+  .emoji-picker {
+    display: none;
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+  .emoji-picker.show {
+    display: block;
+  }
+  .emoji {
+    cursor: pointer;
+    font-size: 20px;
+    margin: 5px;
+  }
+  #emoji-btn {
+    background-color: #053df5;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  #emoji-btn:hover {
+    background-color: #5a3aa9;
+  }
+  
+  #voice-btn {
+    background-color: #f4eb89;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  #voice-btn:hover {
+    background-color: orange;
+  }
+
+  #image-btn {
+    background-color: #f4eb89;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  #image-btn:hover {
+    background-color: orange;
+  }
+
+  button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  #loader {
+    display: none; /* Hide by default */
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+  }
+</style>
+</head>
+<body>
+  <div id="chat-container">
+    <div>
+      <h1>AI_Chatbot</h1>
+    </div>        
+    <div id="chat-history"></div>
+      <form id="chat-form" style="margin: bottom 50px;">
+        <input type="text" id="user-input" placeholder="Enter your message">
+      
+        <!-- 表情包选择器 -->
+        <div class="emoji-container">
+          <button type="button" id="emoji-btn">😀</button>
+          <div id="emoji-picker" class="emoji-picker">
+            <span class="emoji" onclick="insertEmoji('😀')">😀</span>
+            <span class="emoji" onclick="insertEmoji('😂')">😂</span>
+            <span class="emoji" onclick="insertEmoji('❤️')">❤️</span>
+            <span class="emoji" onclick="insertEmoji('😘')">😘</span>
+            <span class="emoji" onclick="insertEmoji('👍')">👍</span>
+            <span class="emoji" onclick="insertEmoji('👋')">👋</span>
+            <span class="emoji" onclick="insertEmoji('🎉')">🎉</span>
+            <span class="emoji" onclick="insertEmoji('🙏')">🙏</span>
+            <span class="emoji" onclick="insertEmoji('😊')">😊</span>
+            <span class="emoji" onclick="insertEmoji('😍')">😍</span>
+            <span class="emoji" onclick="insertEmoji('😎')">😎</span>
+            <span class="emoji" onclick="insertEmoji('🥳')">🥳</span>
+            <span class="emoji" onclick="insertEmoji('😡')">😡</span>
+            <span class="emoji" onclick="insertEmoji('😢')">😢</span>
+            <span class="emoji" onclick="insertEmoji('😴')">😴</span>
+            <span class="emoji" onclick="insertEmoji('🤔')">🤔</span>
+            <span class="emoji" onclick="insertEmoji('😷')">😷</span>
+            <span class="emoji" onclick="insertEmoji('🥺')">🥺</span>
+            <span class="emoji" onclick="insertEmoji('😱')">😱</span>
+            <span class="emoji" onclick="insertEmoji('😇')">😇</span>
+            <span class="emoji" onclick="insertEmoji('😭')">😭</span>
+          </div>
+        </div>
+        <button type="button" id="voice-btn">🎤</button>
+        <button type="button" id="image-btn" onclick="document.getElementById('image-upload').click()">🖼️</button>
+        <input type="file" id="image-upload" style="display: none;" accept="image/*">
+        <button type="submit">Send</button>
+      </form>
+    </div>
+    <div id="loader">
+      <img src="loader.gif" width="100px" alt="Loading...">
+    </div>
+  </div>  
+  <script>
+    const chatHistory = document.getElementById('chat-history');
+    const userInput = document.getElementById('user-input');
+    const form = document.getElementById('chat-form');
+    const emojiBtn = document.getElementById('emoji-btn');
+    const emojiPicker = document.getElementById('emoji-picker');
+    const voiceBtn = document.getElementById('voice-btn');
+    const imageUpload = document.getElementById('image-upload');
+    
+    let uploadedImage = null;
+
+    // Handle image upload
+    imageUpload.addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = new Image();
+            img.onload = () => {
+              const canvas = document.createElement('canvas');
+              const MAX_WIDTH = 512;
+              const MAX_HEIGHT = 512;
+
+              let width = img.width;
+              let height = img.height;
+
+              // Calculate scaling factors to fit within max dimensions
+              if (width > MAX_WIDTH) {
+                height *= MAX_WIDTH / width;
+                width = MAX_WIDTH;
+              }
+              if (height > MAX_HEIGHT) {
+                width *= MAX_HEIGHT / height;
+                height = MAX_HEIGHT;
+              }
+
+              canvas.width = width;
+              canvas.height = height;
+              const ctx = canvas.getContext('2d');
+              ctx.drawImage(img, 0, 0, width, height);
+
+              // Convert canvas to data URL with JPEG compression
+              canvas.toBlob((blob) => { 
+                const resizedFile = new File([blob], file.name, {type: 'image/jpeg'});
+                const reader = new FileReader();
+                reader.onloadend = (e) => {
+                  uploadedImage = e.srcElement.result;
+                  const imgElement = document.createElement('img');
+                  imgElement.src = uploadedImage;
+                  imgElement.classList.add('message-image');
+                  addMessage('user', imgElement);
+                }
+                reader.readAsDataURL(resizedFile);
+                userInput.value = "image";
+              }, 'image/jpeg', 0.8); // 0.8 is the quality (0-1)
+            };
+            img.src = e.target.result;
+        }
+        reader.readAsDataURL(file);
+      }
+    });
+    
+    emojiBtn.addEventListener('click', () => {
+      emojiPicker.classList.toggle('show');
+    });
+    function insertEmoji(emoji) {
+      userInput.value += emoji;
+      emojiPicker.classList.remove('show');
+    }
+    
+    // Web Speech API
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      alert('Your browser does not support speech recognition.');
+    }
+    else {
+      const recognition = new SpeechRecognition();
+      recognition.lang = 'en-US';
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+    
+      voiceBtn.addEventListener('click', () => {
+        recognition.start();
+        voiceBtn.textContent = '🎤 Listening...';
+      });
+
+      recognition.addEventListener('result', (event) => {
+        const transcript = event.results[0][0].transcript;
+        userInput.value = transcript;
+        voiceBtn.textContent = '🎤';
+      });
+
+      recognition.addEventListener('end', () => {
+        voiceBtn.textContent = '🎤';
+      });
+
+      recognition.addEventListener('error', (event) => {
+        console.error('Speech recognition error:', event.error);
+        voiceBtn.textContent = '🎤';
+      });
+    }
+
+    async function sendMessage() {
+      const userMessage = userInput.value.trim();
+      userInput.value = '';
+      console.log(userMessage)
+      try {
+        const response = await fetch('/chat', {
+          method: 'POST',
+          headers: {
+          'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ userInput: userMessage }),
+        });  
+      
+        const data = await response.json();
+        const botMessage = data.response;
+        
+        chatHistory.innerHTML += `
+          <div class="user-message">
+            <div class="content">${userMessage}</div>
+            <img class="avatar" src="https://sc04.alicdn.com/kf/Hea8a1a25e9af45a7857557462f2a97c4r.jpg" alt="user Avatar">
+          </div>`;
+        chatHistory.innerHTML += `
+          <div class="bot-message">
+            <img class="avatar" src="https://th.bing.com/th/id/OIP.Qd-iXyJHk6NA5o214-Vi6gHaIh?pid=ImgDet&w=183&h=210&c=7&dpr=1.3" alt="bot Avatar">
+            <div class="content">${botMessage}</div>
+          </div>`;
+
+          speak(data.response);
+
+        // Scroll to the bottom of the chat history
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+        userInput.value = '';
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+
+    function speak(text) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'en-US';
+      utterance.rate = 1; // Speed (0.1 to 10)
+      utterance.pitch = 1; // Tone (0 to 2)
+      utterance.volume = 1; // Volumn (0 to 1)
+
+      // Play the voice
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function addMessage(sender, content) { 
+      const messageDiv = document.createElement('div');
+      messageDiv.classList.add('message', `${sender}-message`);
+
+      const avatar = document.createElement('img');
+      avatar.classList.add('avatar');
+      avatar.src = sender === 'user' ? "https://sc04.alicdn.com/kf/Hea8a1a25e9af45a7857557462f2a97c4r.jpg" : "https://th.bing.com/th/id/OIP.Qd-iXyJHk6NA5o214-Vi6gHaIh?pid=ImgDet&w=183&h=210&c=7&dpr=1.3";
+      avatar.alt = `${sender} Avatar`;
+      messageDiv.appendChild(avatar);
+
+      const contentDiv = document.createElement('div');
+      contentDiv.classList.add('content');
+
+      if (typeof content === 'string') {
+        contentDiv.textContent = content;
+      } else { 
+        contentDiv.appendChild(content); 
+      }
+
+      messageDiv.appendChild(contentDiv);
+      chatHistory.appendChild(messageDiv); 
+    }
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault(); 
+      const loader = document.getElementById('loader');
+      loader.style.display = 'block'; 
+      sendMessage().finally(() => {
+        loader.style.display = 'none'; // Hide the loader after the message is sent
+      });;
+    });
+  </script>
+</body>
+</html>

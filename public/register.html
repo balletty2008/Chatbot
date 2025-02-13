@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+  main {
+    backdrop-filter: blur(15px);
+    padding: 20px;
+    margin-right: 35%;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    width: 1000px;
+    height: 900px;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+  }
+
+  .login-container {
+    width: 600px;
+    height: 315px;
+    margin: 0 auto;
+    margin-top: 30%;
+    border-radius: 15px;
+    box-shadow: 0 10px 50px 0px rbg(59,45,159);
+    background-color: rgb(95, 76, 194);
+    display: flex;
+  }
+  .left-container {
+    display: inline-block;
+    width: 330px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    padding: 60px;
+    background-image: linear-gradient(to bottom right, rgb(118,76,163), rgb(92, 103, 211));
+    flex: 1;    /* Allow it to grow with content */
+  }
+  .title {
+    color: #fff;
+    font-size: 25px;
+    font-weight: 200;
+    padding-top: -10;
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+  .title span {
+    border-bottom: 3px solid rgb(237, 221, 22);
+  }
+  input-container {
+    padding: 20px 0;
+  }
+  input {
+    border: 0;
+    background: none;
+    outline: none;
+    color: #fff;
+    margin: 20px 0;
+    display: block;
+    width: 100%;
+    padding: 5px 0;
+    transition: .2s;
+    border-bottom: 1px solid rgb(199, 191, 219);
+  }
+  input:hover {
+    border-bottom-color: #fff;
+  }
+  ::-webkit-input-placeholder {
+    color: rgb(199, 191, 219);
+  }
+  .message-container {
+    font-size: 14px;
+    transition: .2s;
+    color: rgb(203, 247, 128);
+    cursor: pointer;
+    text-decoration: underline;
+    margin-right: 10px;
+    padding-left: 160px;
+  }
+  .message-container:hover {
+    color: #fff;
+  }
+  .right-container {
+    width: 145px;
+    display: inline-block;
+    height: calc(100%-120px);
+    vertical-align: top;
+    padding: 60px 0;
+  }
+  .regist-container {
+    text-align: center;
+    color:#fff;
+    font-size: 18px;
+    font-weight: 200;
+  }
+  .regist-container span {
+    border-bottom: 3px solid rgb(237, 221, 22);
+  }
+  .action-container {
+    font-size: 10px;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    top: 200px;
+  }
+  .action-container span {
+    border: 1px solid rgb(237, 221, 22);
+    padding: 10px;
+    display: inline;
+    line-height: 20px;
+    border-radius: 20px;
+    position: absolute;
+    bottom: 10px;
+    left: calc(72px - 20px);
+    transition: .2s;
+    cursor: pointer;
+  }
+  .action-container span:hover {
+    background-color: rgb(237, 221, 22);
+    color: rgb(95, 76, 194);
+  }
+</style>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html">
+        <img src="images/cartoon.png" alt="Chatbot Logo" class="logo-img"/>
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html#home">Home</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="index.html#contact">Contact us</a></li>
+    </ul>
+    <div class="auth-buttons">
+      <button class="login-btn" onclick="location.href='login.html'">Login</button>
+      <button class="register-btn" onclick="location.href='register.html'">Register</button>
+    </div>
+  </nav>
+
+  <main>
+    <section>
+      <div class="login-container">
+        <div class="left-container">
+          <div class="title"><span>Sign Up</span></div>
+          <div class="input-container">
+            <input type="text" placeholder="Username" />
+            <input type="password" placeholder="Password" />
+            <input type="email" placeholder="Email" />
+          </div>
+          <div class="message-container">
+            <span>Already have account?</span>
+          </div>
+        </div>
+        <div class="right-container">
+          <div class="regist-container">
+            <span class="register">Sign In</span>
+          </div>
+          <div class="action-container">
+            <span>Register</span>
+          </div>  
+        </div>
+      </div>  
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Chatbot Company. All rights reserved. </p>
+  </footer>
+</body>
+</html>
