@@ -1,23 +1,17 @@
-/* 基本样式 */
 body {
   font-family: Arial, sans-serif;
   color: white;
   margin: 0;
   padding: 0;
-  /*background-color: DarkGreen;*/
-
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   background-image: url('https://www.bing.com/images/blob?bcid=RGW.pkkVag4Ibd-ar8O.qiTRO7x6.....8A');
-      
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
-  /*background-color: #ea552d;*/
-
 }
 
 /* 导航条样式 */
@@ -97,7 +91,6 @@ body {
 }
 
 /* 主要内容区域样式 */
-
 section {
   margin-bottom: 40px;
 }
@@ -131,12 +124,6 @@ h1, h2 {
   transform: scale(1.1);
   /*background-color: #4a148c; /* Darker purple on hover */
 }
-
-
-
-
-
-
 
 /* 页脚样式 */
 footer {
