@@ -18,3 +18,17 @@ This is thesis project in 2025 spring.
 2. Open your browser and input:
    localhost:3000
 
+## cd backend api
+- create virtual env
+- pyton -m venv .venv
+- py -m venv .venv (bash)
+-source .venv/Scripts/activate (bash)
+
+## Install dependencies
+-   pip install flask
+-   pip install flask_restful
+-   pip install flask_sqlalchemy
+-   pip freeze > requirements.txt
+
+
+## touch .gitignore
