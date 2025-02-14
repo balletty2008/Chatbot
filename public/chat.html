@@ -10,7 +10,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: url('https://www.bing.com/images/blob?bcid=RGW.pkkVag4Ibd-ar8O.qiTRO7x6.....8A');
+    background-image: url('images/background.jpg');
       
     background-size: cover;
     background-position: center;
@@ -334,6 +334,7 @@
       voiceBtn.addEventListener('click', () => {
         recognition.start();
         voiceBtn.textContent = '🎤 Listening...';
+        voiceBtn.style.color = 'blue';
       });
 
       recognition.addEventListener('result', (event) => {
@@ -371,11 +372,11 @@
         chatHistory.innerHTML += `
           <div class="user-message">
             <div class="content">${userMessage}</div>
-            <img class="avatar" src="https://sc04.alicdn.com/kf/Hea8a1a25e9af45a7857557462f2a97c4r.jpg" alt="user Avatar">
+            <img class="avatar" src="images/user.jpg" alt="user Avatar">
           </div>`;
         chatHistory.innerHTML += `
           <div class="bot-message">
-            <img class="avatar" src="https://th.bing.com/th/id/OIP.Qd-iXyJHk6NA5o214-Vi6gHaIh?pid=ImgDet&w=183&h=210&c=7&dpr=1.3" alt="bot Avatar">
+            <img class="avatar" src="images/bot.jpg" alt="bot Avatar">
             <div class="content">${botMessage}</div>
           </div>`;
 
@@ -406,7 +407,7 @@
 
       const avatar = document.createElement('img');
       avatar.classList.add('avatar');
-      avatar.src = sender === 'user' ? "https://sc04.alicdn.com/kf/Hea8a1a25e9af45a7857557462f2a97c4r.jpg" : "https://th.bing.com/th/id/OIP.Qd-iXyJHk6NA5o214-Vi6gHaIh?pid=ImgDet&w=183&h=210&c=7&dpr=1.3";
+      avatar.src = sender === 'user' ? "images/user.jpg" : "images/bot.jpg";
       avatar.alt = `${sender} Avatar`;
       messageDiv.appendChild(avatar);
 

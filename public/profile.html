@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+  /* GLASS EFFECT  */
+  main {
+    border-radius: 15px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 25px 40px rgba(0, 0, 0, .1);
+    padding: 20px;
+    margin-right: 35%;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    width: 1000px;
+    height: 900px;
+    display: flex;
+    flex-direction: column;   /* Stack elements vertically */
+  }
+  
+  .profile-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 400px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    backdrop-filter: blur(10px); /* Glass effect*/
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 30px;
+    margin: 0 auto;
+    margin-top: 15%;
+    text-align: center;
+    color: #fff; /* White text for contrast */
+  }
+
+  .profile-container h1 {
+    font-size: 2rem;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    color: rgb(181, 7, 244); /* White text for the heading */
+  }
+
+/* Profile picture section */
+  .profile-picture {
+    margin-bottom: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .profile-picture img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.3); /* Light border */
+    object-fit: cover;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  .profile-picture img:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    border-color: rgba(255, 255, 255, 0.7); /* Brighter border on hover */
+  }
+  .profile-picture button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background: #d526ec;
+    /*background: rgba(255, 255, 255, 0.2); /* Semi-transparent button */
+    border: none;
+    border-radius: 20px;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  .profile-picture button:hover {
+    background: #efad06;
+    transform: translateY(-2px); /* Slight lift on hover */
+  }
+
+/* Profile details section */
+  .profile-details {
+    text-align: center;
+    width: 100%;
+  }
+  .profile-details p {
+    font-size: 1.1rem;
+    margin: 10px 0;
+    color: red;
+  }
+  .profile-details strong {
+    color: rgb(0, 102, 255);  /*rgba(255, 255, 255, 0.8); /* Lighter text for labels */
+  }
+
+/* Profile actions section */
+  .profile-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: auto;
+    padding-bottom: 20px;
+  }
+  .profile-actions button {
+    padding: 10px 20px;
+    background: #6200ea;        /* rgba(255, 255, 255, 0.2); /* Semi-transparent button */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  .profile-actions button:hover {
+    background: #efad06;  /*rgba(255, 255, 255, 0.3); /* Brighter background on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+  }
+</style>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html">
+        <img src="images/cartoon.png" alt="Chatbot Logo" class="logo-img">
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html#home">Home</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#features">Settings</a></li>
+      <li><a href="index.html#contact">Contact us</a></li>
+    </ul>
+    <div class="auth-buttons">
+      <button class="login-btn" onclick="location.href='login.html'">Login</button>
+      <button class="register-btn" onclick="location.href='register.html'">Register</button>
+    </div>
+  </nav>
+
+  <main>
+    <section class="profile-container">
+      <h1>User Profile</h1>
+      <div class="profile-info">
+        <div class="profile-picture">
+          <img src="images/user.jpg" alt="Profile Picture" id="profile-pic">      
+          <input type="file" id="upload-pic" accept="image/*" style="display: none;">
+          <button onclick="document.getElementById('upload-pic').click()">Change Photo</button>
+        </div>
+        <div class="profile-details">
+          <p><strong>Username:</strong> <span id="username">Hua</span></p>
+          <p><strong>Email:</strong> <span id="email">hua@mail.com</span></p>
+          <p><strong>Joined:</strong> <span id="joined-date">2025.2.14</span></p>
+        </div>
+      </div>
+      <div class="profile-actions">
+        <button onclick="editProfile()">Edit Profile</button>
+        <button onclick="changePassword()">Change Password</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Chatbot Company. All rights reserved.</p>
+  </footer>
+
+  <script src="profile.js"></script>
+</body>
+</html>

@@ -13,6 +13,34 @@ app.use(express.json());
 const MODEL_NAME = "gemini-pro";
 const API_KEY = process.env.API_KEY;
 
+const users = [
+  { id: 1, name: 'John' },
+];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 async function runChatWithRetry(userInput, retries = 3, delay = 1000) { 
   try {
     const genAI = new GoogleGenerativeAI(API_KEY);
