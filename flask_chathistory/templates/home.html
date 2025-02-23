@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Chatbot</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+     <!-- Font Awesome (Optional, for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<div class="container">
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Chatbot AI" class="logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home-section">Home</a></li>
+            <li><a href="#about-section">About Us</a></li>
+            <li><a href="#testimonials_section">Testimonials</a></li>
+            <li><a href="#contact-section">Contact</a></li>
+        </ul>
+         <div class="hamburger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero" id="home-section">
+        <div class="hero-text">
+            <h1>Empower Your Business with AI Chat 🤖</h1>
+            <p>Revolutionize customer engagement and experience the future of intelligent conversations.</p>
+            
+            <div class="hero-buttons">
+                <a href="{{ url_for('chat') }}">
+                    <button class="chat-btn">Start Chatting</button>
+                </a>
+                <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+            </div>
+        </div>
+        
+        <!-- Right Side - Circular Image -->
+        <div class="hero-img">
+            <img src="{{ url_for('static', filename='images/roboot.png') }}" alt="Chatbot AI">
+        </div>
+    </div>
+
+    <!-- About Content with Cards -->
+<section class="about-container" id="about-section">
+    <h2 class="section-title">Why Choose Us?</h2>
+    
+    <div class="about-cards">
+        <div class="card">
+            <i class="fa-solid fa-brain"></i>
+            <h3>Advanced AI</h3>
+            <p>Our chatbot leverages the latest AI technology to provide human-like conversations, making interactions natural, efficient, and highly engaging.</p>
+        </div>
+        <div class="card">
+            <i class="fa-solid fa-users"></i>
+            <h3>User-Friendly</h3>
+            <p>Designed for all users, our chatbot offers a smooth, intuitive experience with an easy-to-navigate interface, ensuring maximum convenience.</p>
+        </div>
+    </div>
+
+    <p class="about-text">
+        Experience the future of AI-powered communication with us. Our technology is built to ensure seamless interactions while prioritizing user ease and satisfaction.
+    </p>
+</section>
+
+
+<!-- Team Section -->
+<section class="team-container" id="testimonials_section">
+    <h2 class="section-title">Meet Our Team 🚀</h2>
+
+    <div class="team-members">
+        <div class="team-card">
+            <div class="card-left">
+                <img src="{{ url_for('static', filename='images/user_icon.png') }}" alt="Team Member">
+            </div>
+            <div class="card-right">
+                <h3>Rachna Kumar</h3>
+                <p>Full Stack Developer</p>
+                <p> A passionate Full Stack Developer who brings ideas to life.</p>
+            </div>
+        </div>
+        <div class="team-card">
+            <div class="card-left">
+                <img src="{{ url_for('static', filename='images/user_icon.png') }}" alt="Team Member">
+            </div>
+            <div class="card-right">
+                <h3>HuaChen</h3>
+                <p>UI/UX Designer</p>
+                <p> A creative UI/UX Designer focused on seamless user experiences.</p>
+            </div>
+        </div>
+        <div class="team-card">
+            <div class="card-left">
+                <img src="{{ url_for('static', filename='images/user_icon.png') }}" alt="Team Member">
+            </div>
+            <div class="card-right">
+                <h3>LeviKat</h3>
+                <p>Backend Developer</p>
+                <p>A skilled Backend Developer ensuring robust and efficient systems.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Use Cases & Industries -->
+   <section class="usecase-container" id="usecase-section">
+    <h2 class="section-title">Where Can You Use Our Chatbot?</h2>
+
+    <div class="usecase-box">
+        <div class="usecase">
+            <i class="fa-solid fa-store"></i>
+            <h3>E-Commerce</h3>
+            <p>Provide 24/7 customer support, product recommendations, and order tracking.</p>
+        </div>
+        <div class="usecase">
+            <i class="fa-solid fa-stethoscope"></i>
+            <h3>Healthcare</h3>
+            <p>Assist patients with appointment booking and answering medical queries.</p>
+        </div>
+        <div class="usecase">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h3>Education</h3>
+            <p>Help students with learning materials, scheduling, and answering FAQs.</p>
+        </div>
+        <div class="usecase">
+            <i class="fa-solid fa-money-bill"></i>
+            <h3>Finance</h3>
+            <p>Provide instant responses to banking inquiries and financial advice.</p>
+        </div>
+        <div class="usecase">
+            <i class="fa-solid fa-hotel"></i>
+            <h3>Hospitality</h3>
+            <p>Enhance guest experience with booking assistance and personalized recommendations.</p>
+        </div>
+        <div class="usecase">
+            <i class="fa-solid fa-headset"></i>
+            <h3>Customer Support</h3>
+            <p>Automate responses to common inquiries and improve response times for businesses.</p>
+        </div>
+    </div>
+</section>
+
+<section>
+          <div class="faq">
+            <h1>FAQ?</h1>
+            <h3>🆓 Is it free to use?</h3>
+            <p>We offer a free basic version. Advanced features are available in our premium plans.</p>
+        </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer" id="contact-section">
+    <p>© 2025 Chatbot AI. All Rights Reserved.</p>
+</footer>
+</div>
+ <script>
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector(".nav-links");
+        const links = document.querySelectorAll(".nav-links li");
+
+        hamburger.addEventListener("click", () => {
+            // Toggle Nav
+            navLinks.classList.toggle("nav-active");
+            //Animate Links
+            links.forEach((link, index) => {
+                if(link.style.animation){
+                    link.style.animation = "";
+                } else {
+                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                }
+            });
+            //Hamburger Animation
+            hamburger.classList.toggle("toggle");
+        });
+    </script>
+
+</body>
+</html>

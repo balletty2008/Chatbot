@@ -1,0 +1,610 @@
+/* General Styles */
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-image: url(./images/bg_7.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* Ensuring full screen on mobile */
+    min-height: 100vh;
+    /* Add margin to center the content */
+    /* Apply the margin to the entire body or a wrapper element */
+    /* Use max-width to control the content width */
+    max-width: 1200px; /* Adjust the max-width as needed */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Navbar */
+.navbar {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    background: linear-gradient(90deg, rgba(229, 139, 247, 0.74), rgba(199, 235, 241, 0.99)); /* Added background to navbar */
+}
+
+/* Logo */
+.logo-container {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem; /* Reduced margin for smaller screens */
+}
+
+.logo {
+    height: 40px; /* Reduced logo size for smaller screens */
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+/* Hamburger Button (Initially Hidden) */
+.hamburger {
+    display: none; /* Hidden by default */
+    cursor: pointer;
+    padding: 10px;
+    margin-right: 1rem;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #0f0c0c;
+    margin: 5px 0;
+    transition: 0.3s;
+}
+
+/* Navbar Links (Hidden by Default on Mobile) */
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 10px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #0f0c0c;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.5s, color 0.3s;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    background: linear-gradient(90deg, #ff8c00, #ff4500);
+    color: black;
+}
+
+
+/* Hero, About, etc. (Same as before - Responsive adjustments included) */
+/* ... Your existing hero, about, etc. styles ... */
+
+
+/* Media Queries for Responsiveness and Hamburger Menu */
+
+/* Mobile Styles */
+@media (max-width: 768px) { /* Adjust breakpoint as needed */
+
+    /* Show Hamburger Button */
+    .hamburger {
+        display: block;
+    }
+
+    /* Hide Nav Links by Default */
+    .nav-links {
+        display: none; /* Hide the links */
+        flex-direction: column; /* Stack the links vertically */
+        position: absolute;
+        top: 60px; /* Below the navbar */
+        left: 0;
+        width: 100%;
+        background: rgba(229, 139, 247, 0.9); /* Or whatever background you want */
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        z-index: 99;  /* Above other content */
+    }
+
+    .nav-links li {
+        margin: 0;
+        text-align: center;
+        padding: 10px 0; /* Add some padding */
+        border-bottom: 1px solid #ccc; /* Optional: Add a separator */
+    }
+
+    .nav-links a {
+        display: block; /* Make the links fill the full width */
+        padding: 15px 0; /* Increase padding for better touch targets */
+    }
+
+    /* Add an active class to the hamburger and nav-links for the open state */
+    .nav-active {
+        display: flex !important; /* Show the nav links */
+    }
+    /* Animated Hamburger Icon */
+    .toggle .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    .toggle .line2 {
+        opacity: 0;
+    }
+    .toggle .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+    /* Center content on mobile */
+    body {
+        max-width: 100%; /* Full width on mobile */
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+/* Tablet and Desktop (unchanged from previous example) */
+@media (min-width: 769px) {  /* Adjust breakpoint as needed */
+    .hamburger {
+        display: none;  /* Hide the hamburger on larger screens */
+    }
+    .nav-links {
+        display: flex; /* Show the links */
+    }
+     /* Tablet and Desktop Hero Section  */
+    .hero {
+        flex-direction: row;  /* Default: side-by-side */
+        padding: 50px;
+        justify-content: space-between;
+    }
+    .hero-text {
+        max-width: 50%;
+        text-align: left; /* Align text to the left */
+    }
+    .hero-img {
+        width: 50%; /*  Adjust as needed */
+        max-width: 400px;
+        height: auto;
+    }
+    .hero-text h1 {
+    font-size: 20px;
+    }
+    body {
+        /* Remove or adjust max-width for full-width content */
+        max-width: 1200px; /* Example value */
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: calc(100vh - 70px); /* Adjusted for navbar height */
+    padding: 20px; /* Reduced padding for smaller screens */
+    margin-top: 70px;
+}
+
+.hero-text {
+    max-width: 100%; /* Full width on smaller screens */
+    text-align: center; /* Center text on smaller screens */
+    margin-bottom: 20px; /* Add margin below text on smaller screens */
+}
+
+.hero-text h1 {
+    font-size: 32px; /* Reduced font size for smaller screens */
+    margin-bottom: 10px;
+    color: #161616d1;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.hero-text p {
+    font-size: 16px; /* Reduced font size for smaller screens */
+    color: #050404;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* Buttons */
+.hero-buttons {
+    margin-top: 10px; /* Reduced margin for smaller screens */
+    text-align: center; /* Center buttons on smaller screens */
+}
+
+.chat-btn,
+.logout-btn {
+    background: linear-gradient(90deg, #e58bf7bd, #d9f4f8fa);
+    color: black;
+    border: none;
+    padding: 10px 16px; /* Reduced padding for smaller screens */
+    font-size: 14px; /* Reduced font size for smaller screens */
+    border-radius: 20px; /* Reduced border radius */
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    margin: 5px; /* Add margin between buttons */
+}
+
+.chat-btn:hover,
+.logout-btn:hover {
+    background: linear-gradient(90deg, darkorange, orangered);
+}
+
+/* Circular Image */
+.hero-img {
+    width: 60%;      /* Use a percentage for flexible width */
+    max-width: 400px;   /* Optional: set a maximum width */
+    height: auto;     /* Maintain aspect ratio */
+    border-radius: 50%;
+    overflow: hidden;
+    animation: zoomIn 1.5s ease-in-out;
+    margin: 0 auto;
+}
+
+.hero-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Floating Animation */
+@keyframes zoomIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* About Hero Section */
+.about-hero {
+    text-align: center;
+    background: linear-gradient(120deg, #2c3e50, #3498db);
+    color: rgba(255, 255, 255, 0.395);
+    padding: 40px 20px; /* Reduced padding for smaller screens */
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.about-hero h1 {
+    font-size: 2.2rem; /* Reduced font size for smaller screens */
+    margin-bottom: 10px;
+    color: #0a0808;
+}
+
+.about-hero p {
+    font-size: 1rem; /* Reduced font size for smaller screens */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.about-container {
+    text-align: center;
+    padding: 30px 20px; /* Reduced padding for smaller screens */
+    color: #050505;
+}
+
+.section-title {
+    font-size: 2rem; /* Reduced font size for smaller screens */
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #050404;
+}
+
+.about-cards {
+    display: flex;
+    justify-content: center;
+    gap: 2rem; /* Reduced gap for smaller screens */
+    flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+}
+
+.card {
+    background: linear-gradient(135deg, #6a11cb70, #2575fc45);
+    border-radius: 12px;
+    padding: 20px; /* Reduced padding for smaller screens */
+    max-width: 450px; /* Reduced max-width for smaller screens */
+    text-align: center;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card i {
+    font-size: 30px; /* Reduced font size for smaller screens */
+    margin-bottom: 10px;
+    color: #9747ff;
+}
+
+.card h3 {
+    font-size: 1.5rem; /* Reduced font size for smaller screens */
+    margin-bottom: 8px;
+}
+
+.card p {
+    font-size: 0.9rem; /* Reduced font size for smaller screens */
+    line-height: 1.4;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.about-text {
+    margin-top: 30px;
+    font-size: 1rem; /* Reduced font size for smaller screens */
+    max-width: 90%; /* Wider max-width on smaller screens */
+    margin-left: auto;
+    margin-right: auto;
+    font-family: cursive;
+}
+
+/* Team Section */
+.team-container {
+    text-align: center;
+    padding: 30px 20px; /* Reduced padding for smaller screens */
+}
+
+.team-members {
+    display: flex;
+    flex-direction: column; /* Stack team members on smaller screens */
+    align-items: center;
+    gap: 15px; /* Reduced gap for smaller screens */
+    margin-top: 20px;
+    animation: fadeIn 1s ease-out;
+}
+
+.team-card {
+    display: flex;
+    align-items: center;
+    width: 90%; /* Full width on smaller screens */
+    max-width: 400px; /* Limit width to avoid extreme stretching */
+    height: auto; /* Adjust height to content */
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgb(7 5 5 / 88%);
+    padding: 12px; /* Reduced padding for smaller screens */
+    transform: translateX(-100%);
+    animation: slideIn 0.8s ease-out forwards;
+    margin: 0 auto; /* Center the cards */
+}
+
+.card-left {
+    flex: 0 0 60px; /* Adjusted size for the image */
+    margin-right: 15px; /* Space between image and text */
+}
+
+.card-left img {
+    width: 50px; /* Smaller image size */
+    height: 50px;
+    border-radius: 50%; /* Round shape */
+    object-fit: cover; /* Ensure image scales correctly */
+}
+
+.card-right {
+    flex: 1; /* Take remaining space */
+    text-align: left;
+}
+
+.card-right h3 {
+    margin: 0;
+    font-size: 16px; /* Reduced font size for smaller screens */
+    font-weight: 600;
+}
+
+.card-right p {
+    margin: 5px 0 0;
+    font-size: 13px; /* Reduced font size for smaller screens */
+    color: #555;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* Slide In and Fade Animation */
+@keyframes slideIn {
+    0% {
+        transform: translateX(-100%); /* Off-screen to the left */
+    }
+
+    100% {
+        transform: translateX(0); /* Move to the original position */
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Animation Delay for Each Card */
+.team-card:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.team-card:nth-child(2) {
+    animation-delay: 0.6s;
+}
+
+.team-card:nth-child(3) {
+    animation-delay: 0.9s;
+}
+
+/* Footer */
+.footer {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0);
+    color: rgb(11, 11, 11);
+    text-align: center;
+    padding: 12px 0; /* Reduced padding for smaller screens */
+    margin-top: 30px;
+}
+
+/* Use Cases & Industries Section */
+.usecase-container {
+    text-align: center;
+    padding: 40px 15px; /* Reduced padding for smaller screens */
+}
+
+.usecase-box {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px; /* Reduced gap for smaller screens */
+    margin-top: 15px;
+}
+
+.usecase {
+    padding: 20px; /* Reduced padding for smaller screens */
+    width: 90%; /* Full width on smaller screens */
+    max-width: 300px; /* Limit width to avoid extreme stretching */
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgb(7 5 5 / 88%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.usecase:hover {
+    transform: translateY(-3px);
+}
+
+.usecase i {
+    font-size: 35px; /* Reduced font size for smaller screens */
+    color: #9747ff;
+    margin-bottom: 12px;
+}
+
+.usecase h3 {
+    font-size: 20px; /* Reduced font size for smaller screens */
+    margin-bottom: 8px;
+}
+
+.usecase p {
+    font-size: 14px; /* Reduced font size for smaller screens */
+    color: #555;
+    font-family: cursive;
+}
+
+/* FAQ Section */
+.faq {
+    text-align: center;
+    padding: 30px 15px; /* Reduced padding for smaller screens */
+    background-color: #9747ff;
+    color: white;
+    border-radius: 8px;
+    margin: 30px auto;
+    width: 90%; /* Wider on smaller screens */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.faq h1 {
+    font-size: 28px; /* Reduced font size for smaller screens */
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.faq h3 {
+    font-size: 20px; /* Reduced font size for smaller screens */
+    margin-top: 12px;
+}
+
+.faq p {
+    font-size: 16px; /* Reduced font size for smaller screens */
+    margin-top: 6px;
+    color: #f1f1f1;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Tablets and Larger Mobile Devices */
+@media (min-width: 600px) {
+    .hero {
+        padding: 50px; /* Increased padding for larger screens */
+    }
+
+    .hero-text {
+        text-align: left;
+        margin-bottom: 0;
+    }
+
+    .hero-buttons {
+        text-align: left;
+    }
+
+    .hero-img {
+        width: 300px;
+        height: 300px;
+        margin: 0;
+    }
+
+    .team-members {
+        flex-direction: row; /* Display team members in a row on tablets */
+        flex-wrap: wrap; /* Allow wrapping if the screen is too small for all team members in a row */
+    }
+
+    .team-card {
+        width: calc(50% - 10px); /* Two cards per row on tablets (with a little spacing) */
+    }
+    /* Adjust margin for centering on larger screens */
+    body {
+        max-width: 90%; /* Example: Adjust as needed */
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Laptops and Desktops */
+@media (min-width: 1024px) {
+    .hero {
+        padding: 100px;
+        justify-content: space-between;
+    }
+
+    .hero-text {
+        max-width: 50%;
+    }
+
+    .hero-buttons {
+        text-align: left;
+    }
+
+    .hero-img {
+        width: 350px;
+        height: 350px;
+    }
+
+    .team-members {
+        flex-direction: row; /* Display team members in a row on larger screens */
+        flex-wrap: nowrap;  /* Prevent wrapping on larger screens */
+    }
+
+    .team-card {
+        width: 500px;
+    }
+    .navbar {
+        background: linear-gradient(90deg, #e58bf7bd, #c7ebf1fa); /* Revert to original navbar gradient */
+    }
+    /* Center the content */
+     body {
+        max-width: 1200px; /* Example: Adjust as needed */
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

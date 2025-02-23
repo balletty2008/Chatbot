@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Chat with AI 🤖</h1>
+
+    <div id="chatbox">
+        <p><strong>Bot:</strong> 👋 Hello! How can I help you?</p>
+    </div>
+
+    <input type="text" id="user_input" placeholder="Type a message..." required>
+    <button onclick="sendMessage()">Send ✉️</button>
+    <button onclick="startVoice()">🎤 Speak</button>
+    <input type="file" id="image_input" accept="image/*">
+    <button onclick="uploadImage()">📷 Send Image</button>
+
+    <br>
+    <a href="{{ url_for('chat_history') }}">📜 View Chat History</a> |
+    <a href="{{ url_for('logout') }}">🚪 Logout</a>
+
+    <script>
+        // Send text message
+        function sendMessage() {
+            var userMessage = $("#user_input").val();
+            if (userMessage.trim() === "") return;
+
+            $("#chatbox").append("<p><strong>You:</strong> " + userMessage + " 😊</p>");
+            $("#user_input").val("");
+
+            $.ajax({
+                type: "POST",
+                url: "/chatbot",
+                contentType: "application/json",
+                data: JSON.stringify({ message: userMessage }),
+                success: function(response) {
+                    $("#chatbox").append("<p><strong>Bot:</strong> " + response.response + " 🤖</p>");
+                    playAudio(response.audio);
+                },
+                error: function() {
+                    $("#chatbox").append("<p><strong>Bot:</strong> ❌ Error generating response.</p>");
+                }
+            });
+        }
+
+        // Record voice input
+        function startVoice() {
+    let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = "en-US";
+    recognition.start();
+
+    recognition.onresult = function(event) {
+        let userMessage = event.results[0][0].transcript;
+        $("#user_input").val(userMessage);
+        sendMessage();
+    };
+
+    recognition.onerror = function(event) {
+        console.error("Speech recognition error:", event.error);
+        alert("Voice recognition failed. Ensure microphone access is granted.");
+    };
+}
+        // Play bot's speech response
+        function playAudio(audioUrl) {
+            let audio = new Audio(audioUrl);
+            audio.play();
+        }
+
+        // Upload image for analysis
+ function uploadImage() {
+    let imageFile = $("#image_input")[0].files[0];
+    if (!imageFile) {
+        alert("Please select an image.");
+        return;
+    }
+
+    let formData = new FormData();
+    formData.append("image", imageFile);
+
+    console.log("Uploading image:", imageFile.name);
+    console.log("FormData:", formData);
+
+    $.ajax({
+        type: "POST",
+        url: "/image_upload",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(response) {
+            console.log("Image upload success:", response);
+            $("#chatbox").append("<p><strong>You:</strong> 🖼️ Sent an image</p>");
+            $("#chatbox").append("<p><strong>Bot:</strong> " + response.response + " 🖼️</p>");
+        },
+        error: function(xhr) {
+            console.error("Image upload error:", xhr.responseText);
+            $("#chatbox").append("<p><strong>Bot:</strong> ❌ Error analyzing image.</p>");
+        }
+    });
+}
+
+    </script>
+</body>
+</html>
